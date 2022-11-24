@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
 
     if @product.save
-      redirect_to my_product_path(@product)
+      redirect_to owner_product_path(@product)
     else
       render :new, status: :unprocessable_entity
     end
