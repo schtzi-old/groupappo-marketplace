@@ -18,7 +18,7 @@ class Booking < ApplicationRecord
     products.each do |product|
       price_per_day += product.price
     end
-    total = price_per_day * 1
+    total = price_per_day * booking_days
     update(price: total)
   end
 end

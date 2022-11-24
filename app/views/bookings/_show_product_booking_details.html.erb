@@ -1,16 +1,16 @@
 <div class="container rounded">
       <div class="card rounded col-5 p-2 w-100">
-        <h3 class="p-2">Your Booking</h3>
+        <h3 class="px-4 py-2">Your Booking</h3>
         <div class="p-2">
           <p>Dates: <%= @booking.start_date.strftime('%d/%m/%Y') %> - <%= @booking.start_date.strftime('%d/%m/%Y') %></p>
-          <p>Total Days: <%= ((@booking.end_date - @booking.start_date)/ 86400).round(0) %> days</p>
+          <p>Total Days: <%= @booking.booking_days %> days</p>
         </div>
         <div class="border-bottom mx-3"></div>
         <div class="p-2">
           <p>Your Items:</p>
             <ul class="list-group px-2">
               <% @booking.products.each do |product_assignment| %>
-                    <li class="list-inline-item p-x-2">
+                    <li class="list-inline-item px-1">
                       <div class="d-flex justify-content-between">
                         <%= product_assignment.name %> (<%= product_assignment.category %> )- $<%= product_assignment.price %>
                         <%= link_to product_assignment, :method => :delete do %>
@@ -23,9 +23,15 @@
             </ul>
         </div>
         <div class="border-bottom mx-3"></div>
-        <div class="p-2 pb-0">
-          <p>Per day</p>
-          <p>Total Price</p>
+        <div class="px-4 pt-2 pb-0">
+          <div class="d-flex justify-content-between">
+            <p>Per day</p>
+            <p>$<%= (@product.price).round(0) %></p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Total Price</p>
+            <p>$<%= (@booking.price).round(0) %></p>
+          </div>
         </div>
       </div>
     </div>
