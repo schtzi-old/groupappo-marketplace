@@ -1,12 +1,8 @@
 <div class="container rounded">
-      <div class="card rounded col-5 p-2 w-100">
-          <h3>Book this bike?</h3>
-          <div class="py-3">
-            <%= render "bookings/form", { booking: @booking, product: @product } %>
-          </div>
+      <div class="card rounded shadow col-5 p-3 w-100">
+        <h3 class="py-2 fw-bold text-center">Book this bike?</h3>
+        <div class="px-3">
+          <%= render "bookings/form", { booking: @booking, product: @product } %>
+        </div>
       </div>
-    </div>
-
-
-<%# current_bookings = @product.bookings.filter{ |booking| booking.booking_status == "draft" && current_user == booking.user } %>
-    <%# current_booking = current_bookings.last %>
+</div>

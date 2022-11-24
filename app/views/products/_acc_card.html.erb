@@ -1,23 +1,32 @@
-<div class="container my-5 overflow-hidden rounded justify-content-center px-3">
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-  <% products =Product.where(category: "accessories", user_id: product.user_id).first(3) %>
-  <% products.each do |product| %>
+<div class="container overflow-hidden rounded justify-content-center px-3">
+  <h4 class="px-3 pb-0 text-center"> Accessories available from <%= @product.user.first_name.capitalize %> <%= @product.user.last_name.capitalize %></h4>
+  <div class="row py-1 my-1">
+  <%# <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 py-2 my-1"> %>
+    <% products =Product.where(category: "accessories", user_id: product.user_id).first(3) %>
+    <% products.each do |product| %>
         <div class="col-4 overflow-hidden">
-          <div class="p-3 border bg-light h-100 ">
+          <div class="card p-3 border bg-white h-100 justify-content-between shadow-sm rounded-lg">
+            <h5 class="fw-bold text-center"> <%= product.name.upcase %> </h5>
             <div class="">
                 <% product.image_url.blank? ? image_url = "data:image/jpeg;base64,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" : image_url = product.image_url %>
-                  <img src="<%= image_url %>" class="img-fluid rounded-start pb-2" alt="..." width="100px">
-              <div class="">
-                <h4> <%= product.name.upcase %> </h4>
-                <h6> <%= product.product_type.capitalize %> </h6>
-                <p><small> <%= product.description %> </small></p>
-              </div>
+                <img src="<%= image_url %>"
+                     class="acc-img mx-auto d-block img-fluid rounded pb-2"
+                      alt="..." height="100px" width="100px">
+                <div class="">
+                  <div class="card-product-infos px-3">
+                    <div>
+                      <div class="d-flex justify-content-between">
+                        <p><%=product.product_type.capitalize%></p>
+                        <p>$<%= product.price.round(0) %> p/d</p>
+                      </div>
+                    </div>
+                    <p class="text-muted"><%=product.description%></p>
+                  </div>
+                </div>
             </div>
-            <div>
-              <%= render 'product_assignments/new', product: product, class: "btn btn-primary w-100" %>
-            </div>
+            <%= render 'product_assignments/new', product: product, class: "btn btn-primary w-100" %>
           </div>
         </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
