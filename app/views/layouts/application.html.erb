@@ -13,11 +13,15 @@
   <body>
     <%= render 'shared/navbar' %>
     <% unless notice.nil?%>
-    <div class="notice alert alert-success" role="alert">
-      <%= notice %>
-    </div>
+      <div class="notice alert alert-success" role="alert">
+        <%= notice %> <i class="fa-solid fa-bicycle"></i>
+      </div>
     <%end%>
-      <p class="alert"> <%= alert %></p>
+    <% unless alert.nil?%>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %> <i class="fa-solid fa-bicycle"></i>
+      </div>
+    <%end%>
       <div class="container">
     <%= yield %>
   </div>

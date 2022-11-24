@@ -1,3 +1,32 @@
-<% @products.each do |product| %>
-  <%= render "index_card", product: product %>
-<%end%>
+<div data-controller="filter">
+  <div id="categories" class="d-flex">
+    <button data-action="click->filter#applyFilter"
+            data-filter-target="all"
+            data-filter="*"
+            class="btn btn-secondary me-3">All bikes</button>
+    <button data-action="click->filter#applyFilter"
+            data-filter-target="button"
+            data-filter="mountain bike"
+            class="btn btn-secondary me-3">
+            Mountain Bikes
+            </button>
+    <button data-action="click->filter#applyFilter"
+            data-filter-target="button"
+            data-filter="road bike"
+            class="btn btn-secondary me-3">
+            Road Bikes
+            </button>
+    <button data-action="click->filter#applyFilter"
+            data-filter-target="button"
+            data-filter="hybrid bike"
+            class="btn btn-secondary">
+            Hybrid Bikes
+            </button>
+  </div>
+  <div data-filter-target="bikesContainer" class="mt-3 p-3 row">
+      <% @products.each do |product| %>
+          <%= render "index_card", product: product %>
+      <%end%>
+  </div>
+</div>
+</div>
